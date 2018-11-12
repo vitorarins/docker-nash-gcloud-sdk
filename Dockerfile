@@ -20,6 +20,6 @@ RUN mkdir -p $NASHROOT \
     && cp -rf bin/* /bin/ \
     && rm -f $tarfile
 
-ENV NASHPATH=/nash
-
-COPY init $NASHPATH/init
+# Hack to overcome the fact that estafette runs "set -e" as the first command.
+COPY set.sh /bin/set
+RUN chmod +x /bin/set
