@@ -19,3 +19,7 @@ RUN mkdir -p $NASHROOT \
     && tar xvfz $tarfile \
     && cp -rf bin/* /bin/ \
     && rm -f $tarfile
+
+ENV NASHPATH=/nash
+
+COPY init $NASHPATH/init
