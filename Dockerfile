@@ -11,11 +11,11 @@ RUN curl https://storage.googleapis.com/kubernetes-release/release/v1.10.7/bin/l
 
 ENV NASHROOT=/nashroot
 ENV VERSION=v1.0
-ENV PATH=$PATH:$NASHROOT/bin
 
 RUN mkdir -p $NASHROOT \
     && cd $NASHROOT \
     && tarfile="nash-$VERSION-linux-amd64.tar.gz" \
     && wget https://github.com/NeowayLabs/nash/releases/download/$VERSION/$tarfile \
     && tar xvfz $tarfile \
+    && cp -rf bin/* /bin/ \
     && rm -f $tarfile
